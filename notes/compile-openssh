@@ -1,0 +1,14 @@
+1. make sure openSSH is compiled on the same OS, the same file system, and the same CC
+   eg, boot baseline -s
+2. configure
+   ./configure "CFLAGS=-I/xdong/other_expr/sva-isa-measure/openSSH_gm/SVAMPX/SVA/include -I/xdong/other_expr/sva-isa-measure/openSSH_gm/SVAMPX/lib/libghost" "LDFLAGS=-L/xdong/other_expr/sva-isa-measure/openSSH_gm/SVAMPX/lib/libghost -static"
+3. /xdong/make_binaries/make.90
+
+4. cp ssh /usr/bin
+   cp ssh-keygen /usr/bin
+   cp ssh-agent /usr/bin
+
+5. export GHOSTING=1; ssh-keygen
+6. unset GHOSTING; cat ~/.ssh/id_rsa.pub | ssh -p 22 192.5.53.64 'cat >> .ssh/authorized_keys'
+7. export GHOSTING=1; ssh  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 22 root@192.5.53.64  cat /vg/VgEval/exprScripts/files/file-1
+make sure that -p 22 is set, otherwise weird parsing error "input in flex scanner failed" will be reported     
