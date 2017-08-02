@@ -1,7 +1,6 @@
-boot baseline -s
-cd libc
-/xdong/make_binaries/make.90
-/xdong/make_binaries/make.90 install DESTDIR=/xdong/temp
-cp /xdong/temp/usr/lib/libc.a /usr/lib
-ln -s /usr/lib/libc.so lib/libc-vg/libc.so.7
-
+1. boot baseline 
+2. cd libc
+3. /xdong/make_binaries/make.90
+4. /xdong/make_binaries/make.90 install DESTDIR=/xdong/temp
+5. install libc.a, libc.so.7, libc_p.a, libc_pic.a from /xdong/temp to /usr/lib, /lib
+based on the operations executed by "make install" in the pervious step
